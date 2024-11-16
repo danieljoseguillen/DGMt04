@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea n4</title>
+    <style>
+        .low {background-color: lightgreen; color: green;}
+        .high {background-color: pink; color: red;}
+    </style>
+</head>
+<body>
+    <h1>Listado de numeros aleatorios</h1>
+    <table border="1px" th:if="${cantidadTotal>0}">
+        <thead>
+            <th>Numero</th>
+            <th>Operación</th>
+        </thead>
+        <tbody>
+            <tr th:each="numero:${listaNumeros}">
+                <td th:text="${numero}" 
+                th:classappend="${numero>50}?'high':'low'"></td>
+                <td><a th:href="@{/delete/{id} (id=${numero})}">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Total de números: <span th:text="${cantidadTotal}">0</span></p>
+    <br>
+    <a th:href="@{/new}">Nuevo numero</a>
+</body>
+</html>

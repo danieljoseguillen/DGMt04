@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cálculos</h1>
+    <a th:href="@{/calculos/primo?numero=7}"> Calculos - primo 7 </a><br />
+    <a th:href="@{/calculos/primo?numero=8}"> Calculos - primo 8 </a><br />
+    <a th:href="@{/calculos/primo?numero=-3}"> Calculos - primo -3 </a><br />
+    <a th:href="@{/calculos/primo}"> Calculos - error (sin numero)</a><br />
+    <a th:href="@{/calculos/hipotenusa/3/5}"> Calculos - hipotenusa 3/5 </a><br />
+    <a th:href="@{/calculos/hipotenusa/-3/5}"> Calculos - hipotenusa -3/5 </a><br />
+    <a th:href="@{/calculos/divisores/20}"> Calculos - divisores 20 </a><br />
+    <a th:href="@{/calculos/divisores/-20}"> Calculos - divisores -20 </a><br />
+    <p th:if="${respuesta!=null}"><span th:text="${respuesta}"></span></p>
+    <ul th:if="${size > 0}">
+        <li th:each="valor : ${divisores}">
+            <a th:href="@{/calculos/divisores/{val}(val=${valor})}">
+                <span th:text="${valor}">Objeto</span>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>
